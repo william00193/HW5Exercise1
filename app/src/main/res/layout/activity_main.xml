@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--    Text view and displaying the question-->
+
+
+    <!--    Linear layout for both of my buttons-->
+
+    <TextView
+        android:id="@+id/question_textView"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/question_australia" />
+
+
+    <TextView
+        android:id="@+id/customtoastlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <!--        True button-->
+        <Button
+            android:id="@+id/true_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/true_button"/>
+
+
+        <!--        False button-->
+        <Button
+            android:id="@+id/false_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/false_button"/>
+
+
+
+    </LinearLayout>
+
+
+    <!--        True button-->
+    <Button
+        android:id="@+id/cheat_button"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cheat_button"/>
+
+
+    <!--    Linear layout for both of my buttons-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <!--        <Button-->
+        <!--            android:id="@+id/previous_button"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@string/previous_button"-->
+        <!--            app:icon="@drawable/ic_baseline_arrow_left_24"-->
+        <!--            app:iconGravity="start" />-->
+
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_button"
+            app:icon="@drawable/ic_baseline_arrow_right_24"
+            app:iconGravity="end" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
