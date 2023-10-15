@@ -158,7 +158,6 @@ Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
     }
 
 
-//Logs for the first exercise
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart() called")
