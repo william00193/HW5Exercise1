@@ -1,5 +1,7 @@
 package com.example.hw5exercise1
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,8 @@ import androidx.lifecycle.ViewModel
 //private const val TAG = "QuizViewModel"
 private const val CURRENT_INDEX_KEY = "CURRENT_INDEX_KEY"
 private const val IS_CHEATER_KEY = "IS_CHEATER_KEY"
+
+
 
 
 
@@ -53,7 +57,6 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle): ViewModel()
 //Getting this variable from the current index of question banks Text section
     val currentQuestionText: Int
         get() = questionBank[currentIndex].textResId
-
 
 
 

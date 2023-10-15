@@ -18,6 +18,7 @@ import com.example.hw5exercise1.databinding.ActivityMainBinding
 
 
 
+
 //Naming the Tag as 'MainActivity'
 private const val TAG = "MainActivity"
 
@@ -32,13 +33,14 @@ class MainActivity : AppCompatActivity() {
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     )
-            { result ->
+    { result ->
 
-                if (result.resultCode == Activity.RESULT_OK) {
-                    quizViewModel.isCheater =
-                        result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
-                }
-            }
+        if (result.resultCode == Activity.RESULT_OK) {
+            quizViewModel.isCheater =
+                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+        }
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -122,7 +124,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//Update question function
+    //Update question function
     private fun updateQuestion() {
 
         val questionTextResId = quizViewModel.currentQuestionText
@@ -134,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//Function to check if user answer is correct
+    //Function to check if user answer is correct
     private fun checkAnswer(userAnswer: Boolean) {
 
 
@@ -143,16 +145,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    val messageResId =
+        val messageResId =
             when {
-            quizViewModel.isCheater -> R.string.judgement_toast
-            userAnswer == correctAnswer -> R.string.correct_toast
-            else ->  R.string.incorrect_toast
-        }
+                quizViewModel.isCheater -> R.string.judgement_toast
+                userAnswer == correctAnswer -> R.string.correct_toast
+                else ->  R.string.incorrect_toast
+            }
 
 
-Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
-    .show()
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+            .show()
 
 
     }

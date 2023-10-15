@@ -5,11 +5,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.hw5exercise1.databinding.ActivityCheatBinding
 
 
 
- const val EXTRA_ANSWER_SHOWN =
+
+
+const val EXTRA_ANSWER_SHOWN =
     "com.example.hw5exercise1.answer_shown"
 
 private const val EXTRA_ANSWER_IS_TRUE =
@@ -39,7 +42,7 @@ class CheatActivity : AppCompatActivity() {
                 else -> R.string.false_button
             }
             binding.answerTextView.setText(answerText)
-           setAnswerShownResult(true)
+            setAnswerShownResult(true)
         }
     }
 
@@ -53,12 +56,12 @@ class CheatActivity : AppCompatActivity() {
     }
 
     companion object {
-    fun newIntent(packageContext: Context, answerIsTrue: Boolean): Intent {
-        return Intent(packageContext, CheatActivity::class.java).apply {
-            putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue)
+        fun newIntent(packageContext: Context, answerIsTrue: Boolean): Intent {
+            return Intent(packageContext, CheatActivity::class.java).apply {
+                putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue)
+            }
         }
     }
-}
 
 
 
