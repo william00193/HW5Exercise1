@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.hw5exercise1.databinding.ActivityCheatBinding
-import com.example.hw5exercise1.databinding.ActivityMainBinding
+
 
 
  const val EXTRA_ANSWER_SHOWN =

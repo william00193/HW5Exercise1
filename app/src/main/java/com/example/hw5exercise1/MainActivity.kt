@@ -1,52 +1,48 @@
 package com.example.hw5exercise1
 
 import android.app.Activity
-import android.content.Intent
-import android.graphics.Color
+
 import android.os.Bundle
-import android.os.CountDownTimer
+
 import android.util.Log
-import android.view.View
+
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
+
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hw5exercise1.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
 
 
 
 
 
-//Naming the Tag as 'MainActivty'
+
+//Naming the Tag as 'MainActivity'
 private const val TAG = "MainActivity"
 
 
 class MainActivity : AppCompatActivity() {
 
-var questionCount = 1
+    private lateinit var binding: ActivityMainBinding
 
     //Giving a name to my ViewModel that will be referenced from another page later
     private val quizViewModel: QuizViewModel by viewModels()
-    private lateinit var binding: ActivityMainBinding
 
     private val cheatLauncher = registerForActivityResult(
-
         ActivityResultContracts.StartActivityForResult()
     )
-    { result ->
+            { result ->
 
-        if (result.resultCode == Activity.RESULT_OK) {
-            quizViewModel.isCheater =
-                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
-        }
-    }
+                if (result.resultCode == Activity.RESULT_OK) {
+                    quizViewModel.isCheater =
+                        result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+                }
+            }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 
 //Binding and layout Inflator stayed the same as the last few activities
@@ -84,33 +80,10 @@ var questionCount = 1
 
         binding.questionTextView.setOnClickListener {
 
-
             quizViewModel.moveNext()
 
         }
 
-
-
-//Previous button that is not going to be used in this activity
-//        binding.previousButton.setOnClickListener {
-//
-//
-//            quizViewModel.movePrevious()
-//
-//        }
-
-
-//New button created for homework #5
-binding.cheatButton.setOnClickListener {
-
-   // val intent = Intent(this,CheatActivity::class.java)
-    val answerIsTrue = quizViewModel.currentQuestionAnswer
-    val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
-        //    startActivity(intent)
-    cheatLauncher.launch(intent)
-
-
-}
 
 
         binding.nextButton.setOnClickListener {
@@ -127,6 +100,20 @@ binding.cheatButton.setOnClickListener {
 
         }
 
+
+//New button created for homework #5
+        binding.cheatButton.setOnClickListener {
+
+//val intent = Intent(this,CheatActivity::class.java)
+            val answerIsTrue = quizViewModel.currentQuestionAnswer
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+
+
+//startActivity(intent)
+            cheatLauncher.launch(intent)
+
+        }
+
         updateQuestion()
 
     }
@@ -135,7 +122,7 @@ binding.cheatButton.setOnClickListener {
 
 
 
-    //Update question function
+//Update question function
     private fun updateQuestion() {
 
         val questionTextResId = quizViewModel.currentQuestionText
@@ -147,7 +134,7 @@ binding.cheatButton.setOnClickListener {
 
 
 
-    //Function to check if user answer is correct
+//Function to check if user answer is correct
     private fun checkAnswer(userAnswer: Boolean) {
 
 
@@ -156,8 +143,7 @@ binding.cheatButton.setOnClickListener {
 
 
 
-
-        val messageResId =
+    val messageResId =
             when {
             quizViewModel.isCheater -> R.string.judgement_toast
             userAnswer == correctAnswer -> R.string.correct_toast
@@ -172,7 +158,7 @@ Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
     }
 
 
-    //Logs for the first exercise
+//Logs for the first exercise
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart() called")
